@@ -103,3 +103,4 @@
 */*/*/bd/*/ip/*/*.tcl
 hw_handoff
 ipshared
+6502.sim/
