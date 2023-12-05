@@ -20,8 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module 6502_tb;
+module 6502_tb ();
 
-input clock;
+reg clock = 1'b0;
+
+top uut (.clock(clock));
+
+initial begin
+    clock = 1'b0;
+    forever begin
+       #10 clock = ~clock;
+    end
+end
 
 endmodule
