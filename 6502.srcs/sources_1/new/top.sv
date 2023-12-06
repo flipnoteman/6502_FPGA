@@ -19,21 +19,21 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// System Definition
 module top(
-    input reg clock
+    input clk
     );
-    reg clock_2mhz;         //CPU clock
-    reg [3:0] cyc_count;    //Clock cycle counter
-    reg [7:0] A;            //Accumulator
-    reg [7:0] Y;            //Index Register
-    reg [7:0] X;            //Index Register
-    reg [15:0] PC;          //Program Counter
-    reg [8:0] S;            //Stack Pointer
-    reg [7:0] PSR;          //Process Status Register
 
+    wire [7:0] data_bus;    // Data bus
+    wire clock_2mhz;        // CPU clock
+    wire rwb;
+    wire [15:0] address;    // Address pins
+    reg [3:0] cyc_count;    // Clock cycle counter
 
-    clock_divider cd (clock, 50, clock_2mhz); // Get 2mhz clock
+    clock_divider cd (clk, 50, clock_2mhz); // Get 2mhz clock
+
+    //cpu_6502 cpu (.clk(clock_2mhz), .address(address), .rwb(rwb), .data_bus(data_bus));
+    memory mem (.clk(clock_2mhz), .address(address), .rwb(rwb), .data_bus(data_bus));
 
     // task automatic match_op() 
     //     case (op)
