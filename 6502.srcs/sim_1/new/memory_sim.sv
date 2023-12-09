@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module testbench;
+module memory_sim;
     reg clk;
     reg [15:0] address;
     reg rwb;
@@ -39,7 +39,6 @@ module testbench;
         clk = 0;
         address = 0;
         rwb = 0;
-        //data = 0;
 
         // Create clock signal
         forever #10 clk = ~clk;
@@ -67,66 +66,3 @@ module testbench;
             $display("At time %t, read %h from address %h", $time, data_bus, address);
     end
 endmodule
-
-// module memory_sim;
-    
-//     reg clk;
-//     reg [15:0] address;
-//     reg rwb;
-//     reg [7:0] data_bus;
-//     //wire [7:0] data;
-   
-//     //assign data_bus = (rwb) ? data : 8'bz;
-
-   
-//     memory mem (
-//         .clk(clk),
-//         .address(address),
-//         .rwb(rwb),
-//         .data_bus(data_bus)
-//     );
-
-//     initial begin    
-//         clk = 1'b0;
-//         forever begin
-//             #10 clk = ~clk;
-//         end
-//     end
-
-//     initial begin
-//         data_bus = 8'bz;
-
-//         #100;
-
-//         address = 16'h1352;
-//         rwb = 1'b1;
-//         data_bus = 8'hFF;
-        
-//         #10;
-
-//         rwb = 1'b0; 
-//         data_bus = 8'bz;
-
-
-//         #100;
-
-//         address = 16'hFFFF; // Checking write outside of RAM space
-//         rwb = 1'b1;
-//         data_bus = 8'hFF;
-        
-//         #10;
-
-//         rwb = 1'b0; 
-//         data_bus = 8'bz;
-        
-//         #100;
-
-//         address = 16'h14D2;
-        
-//         #100;
-        
-//         address = 16'hFFFF;
-        
-//         $finish;
-//     end
-// endmodule
