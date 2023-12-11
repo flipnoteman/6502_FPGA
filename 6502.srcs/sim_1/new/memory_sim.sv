@@ -20,7 +20,6 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module memory_sim;
-    reg clk;
     reg [15:0] address;
     reg rwb;
     wire [7:0] data_bus;
@@ -28,7 +27,6 @@ module memory_sim;
 
     // Instantiate the memory module
     memory u1 (
-        .clk(clk),
         .address(address),
         .rwb(rwb),
         .data_bus(data_bus)
@@ -36,12 +34,8 @@ module memory_sim;
 
     initial begin
         // Initialize inputs
-        clk = 0;
         address = 0;
         rwb = 0;
-
-        // Create clock signal
-        forever #10 clk = ~clk;
     end
 
     assign data_bus = (rwb) ? 8'hZZ : data;

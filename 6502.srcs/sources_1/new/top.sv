@@ -33,7 +33,7 @@ module top(
     clock_divider cd (clk, 50, clock_2mhz); // Get 2mhz clock
 
     cpu_6502 cpu (.clk(clock_2mhz), .address(address), .rwb(rwb), .data_bus(data_bus));
-    memory mem (.clk(clock_2mhz), .address(address), .rwb(rwb), .data_bus(data_bus));
+    memory mem (.address(address), .rwb(rwb), .data_bus(data_bus));
 
     
 endmodule

@@ -21,23 +21,19 @@
 
 
 module memory(
-        input clk,
         input [15:0] address,
         input rwb,                  // Read/Write Bus 1: Read; 0: Write
         inout [7:0] data_bus
     );
 
     parameter SIZE = 16'h7FFF; 
-    logic [7:0] data_reg = 0;
     logic [7:0] RAM [0:SIZE];       // 32K x 8 bits of RAM
 
-    assign data_bus = (rwb) ? data_reg : 8'hZZ; // Tri-state buffer for in_out port
+    assign data_bus = (rwb) ? RAM[address] : 8'hZZ; // Tri-state buffer for in_out port
 
-    always @(posedge clk) begin
+    always @(rwb or data_bus or address) begin
         if (~rwb)              // Write Logic
-            if(address <= SIZE)
-                RAM[address] = data_bus;
-        data_reg = (address > SIZE ) ? 8'h00 : RAM[address];
+            RAM[address] = data_bus;
     end
 
 endmodule

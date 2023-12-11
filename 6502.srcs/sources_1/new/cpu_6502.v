@@ -34,6 +34,7 @@ module cpu_6502(
     reg [7:0] SP;           //Stack Pointer
     reg [7:0] SR;           //Processor Status Register
 
+    reg [7:0] IR;
 
 
     // task automatic match_op() 
