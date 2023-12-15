@@ -22,6 +22,8 @@
 
 module testbench;
 
-ALUsim ALUuut();
+//ALUsim ALUuut();
+
+decode_rom_sim drs();
 
 endmodule
