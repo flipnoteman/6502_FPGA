@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 12/09/2023 03:38:09 PM
+// Create Date: 12/17/2023 03:06:15 PM
 // Design Name: 
-// Module Name: testbench
+// Module Name: clock_generator_sim
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,12 +20,19 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module testbench;
+module clock_generator_sim;
 
-//ALUsim ALUuut();
+    reg clk_in;
+    wire clk_1;
+    wire clk_2;
 
-decode_rom_sim drs();
+    clock_generator cg(clk_in, clk_1, clk_2);
 
-//clock_generator_sim cgs();
+    initial begin
+        forever begin
+            #10 clk_in = 1'b1;
+            #10 clk_in = 1'b0;
+        end
+    end
 
 endmodule

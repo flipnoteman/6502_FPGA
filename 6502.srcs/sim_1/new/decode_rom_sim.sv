@@ -30,7 +30,7 @@ module decode_rom_sim;
     initial begin
         #10;
 
-        IR = 8'h84;
+        IR = 8'h49; //01001001
         timing_sig = 6'b111110;
 
         #10 timing_sig = 6'b111101;
