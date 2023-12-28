@@ -14,7 +14,8 @@ module decode_rom(
     );
 
     wire IR10;
-    or(IR10, IR[1], IR[0]);
+    or(IR10, IR[1], IR[0]);   
+     
     //                                                                                         INSTADDR G T T  InstName     Net
     nor(pla[0], ~IR[2], IR[5], IR[6], ~IR[7], IR10);                                        // 100XX1XX 3 X TA STY          #1601
     nor(pla[1], timing_sig[3], IR[3], IR[4], ~IR[5], ~IR[0]);                               // XXX100XX 1 3 T3 INDY A       #60
